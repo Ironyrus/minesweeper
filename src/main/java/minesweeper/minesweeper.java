@@ -1,22 +1,29 @@
 package minesweeper;
-
 /*
 mvn archetype:generate -DgroupId=minesweeper -DartifactId=miniproj -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
 git add . (add ALL content of cart to github)
 git commit -m "While Loop"                  (add comment while committing)
 git push origin main                        (push to main branch)
+
+mvn compile exec:java -Dexec.mainClass="minesweeper.minesweeper"
+
+javac src/main/java/minesweeper/minesweeper.java
+
+vans_@LAPTOP-AS886SBL MINGW64 ~/VISA NUS-ISS VTTP/testing/miniproj/src/main/java (main)
+$ javac minesweeper/minesweeper.java
+
+
 */
 
 import java.io.Console;
-import java.util.ArrayList;
 import java.util.Random;
+import minesweeper.*;
 
 public class minesweeper {
-    public static String[][] game;
-    public static cell[][] cells = new cell[10][10];
+    public static String[][] game = null;
+    public static cell cells[][] = new cell[10][10];
 
     public static void main(String[] args){
-
         //Start a 10X10 gameboard
         game = new String[10][10];
 
@@ -55,6 +62,7 @@ public class minesweeper {
                 cells[Integer.parseInt(entry[0])][Integer.parseInt(entry[1])].Bomb();
             }
             else if(input.contains("peek")){
+                updateBoard();
                 peek();
             }
             else if(input.contains("difficulty")){
